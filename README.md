@@ -11,9 +11,7 @@
 
 如果您对本程序进行了改进，欢迎PR！
 
-[下载地址](./releases)
-
-[Wiki](./wiki)
+[下载地址](https://github.com/Plastic-Metal/HIT-Schedule-Master-CLI/releases)
 
 ## 主要功能
 
