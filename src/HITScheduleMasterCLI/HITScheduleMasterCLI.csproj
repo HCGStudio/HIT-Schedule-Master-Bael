@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HIT-Schedule-Master-Core\src\HITScheduleMasterCore\HITScheduleMasterCore.csproj" />
-    <ProjectReference Include="..\PlasticMetal.MobileSuit\MobileSuit\MobileSuit.csproj" />
+    <ProjectReference Include="..\HIT-Schedule-Master-Core\src\HITScheduleMasterCore.csproj" />
+    <ProjectReference Include="..\PlasticMetal.MobileSuit\src\MobileSuit\MobileSuit.csproj" />
   </ItemGroup>
 
 </Project>

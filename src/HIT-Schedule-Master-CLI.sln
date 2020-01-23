@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HITScheduleMasterCLI", "HITScheduleMasterCLI\HITScheduleMasterCLI.csproj", "{F1BE1D19-D510-4333-8096-995993BA8B83}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HITScheduleMasterCore", "HIT-Schedule-Master-Core\src\HITScheduleMasterCore\HITScheduleMasterCore.csproj", "{C2D57028-2CFF-4F81-B56D-002CD8B6C814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HITScheduleMasterCore", "HIT-Schedule-Master-Core\src\HITScheduleMasterCore.csproj", "{B2E5D2FC-E471-4A0B-A7DA-10F84F57845B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileSuit", "PlasticMetal.MobileSuit\MobileSuit\MobileSuit.csproj", "{8AA43D43-FAEF-4514-AA51-F5DC33E3DE6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileSuit", "PlasticMetal.MobileSuit\src\MobileSuit\MobileSuit.csproj", "{9878436F-94F1-4557-9E8F-BECC8BA9193B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{F1BE1D19-D510-4333-8096-995993BA8B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1BE1D19-D510-4333-8096-995993BA8B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1BE1D19-D510-4333-8096-995993BA8B83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2D57028-2CFF-4F81-B56D-002CD8B6C814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2D57028-2CFF-4F81-B56D-002CD8B6C814}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2D57028-2CFF-4F81-B56D-002CD8B6C814}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2D57028-2CFF-4F81-B56D-002CD8B6C814}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AA43D43-FAEF-4514-AA51-F5DC33E3DE6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AA43D43-FAEF-4514-AA51-F5DC33E3DE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AA43D43-FAEF-4514-AA51-F5DC33E3DE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AA43D43-FAEF-4514-AA51-F5DC33E3DE6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E5D2FC-E471-4A0B-A7DA-10F84F57845B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E5D2FC-E471-4A0B-A7DA-10F84F57845B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E5D2FC-E471-4A0B-A7DA-10F84F57845B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E5D2FC-E471-4A0B-A7DA-10F84F57845B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9878436F-94F1-4557-9E8F-BECC8BA9193B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9878436F-94F1-4557-9E8F-BECC8BA9193B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9878436F-94F1-4557-9E8F-BECC8BA9193B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9878436F-94F1-4557-9E8F-BECC8BA9193B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
