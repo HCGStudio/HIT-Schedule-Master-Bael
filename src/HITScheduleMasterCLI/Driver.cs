@@ -37,7 +37,7 @@ namespace HITScheduleMasterCLI
             
             var weekExpression = Io?.ReadLine("输入周数(周数/起始-截至[单/双/(无)])");
             Schedule.Entries.Add(new ScheduleEntry((DayOfWeek) week, default,
-                    $"{name}<>{teacher}[{weekExpression}]@{location}")
+                    name,$"{teacher}[{weekExpression}]@{location}")
                 {StartTime = startTime, Length = length});
             return;
         WrongInput:
