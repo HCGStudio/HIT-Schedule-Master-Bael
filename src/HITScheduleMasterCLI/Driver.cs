@@ -27,18 +27,18 @@ namespace HITScheduleMasterCLI
         {
             var name = Io?.ReadLine("输入课程名称");
             if (!int.TryParse(Io?.ReadLine("输入星期(0-6,0表示周日)"), out var week)
-            ||week<0||week>6) goto WrongInput;
+            || week < 0 || week > 6) goto WrongInput;
             var teacher = Io?.ReadLine("输入教师");
             var location = Io?.ReadLine("输入地点");
             if (!TimeSpan.TryParse(Io?.ReadLine("输入开始时间(hh:mm:ss)"), out var startTime))
                 goto WrongInput;
             if (!TimeSpan.TryParse(Io?.ReadLine("输入持续时间(hh:mm:ss)"), out var length))
                 goto WrongInput;
-            
+
             var weekExpression = Io?.ReadLine("输入周数(周数/起始-截至[单/双/(无)])");
-            Schedule.Entries.Add(new ScheduleEntry((DayOfWeek) week, default,
-                    name,$"{teacher}[{weekExpression}]@{location}")
-                {StartTime = startTime, Length = length});
+            Schedule.AddScheduleEntry(new ScheduleEntry((DayOfWeek)week, default,
+                    name, $"{teacher}[{weekExpression}]@{location}")
+            { StartTime = startTime, Length = length });
             return;
         WrongInput:
             Io?.WriteLine("非法输入。", OutputType.Error);
@@ -52,19 +52,19 @@ namespace HITScheduleMasterCLI
                 Io?.WriteLine("未找到文件。", OutputType.Error);
                 return;
             }
-            Schedule.Entries.Add(DeserializeObject<ScheduleEntry>(File.ReadAllText(path)));
+            Schedule.AddScheduleEntry(DeserializeObject<ScheduleEntry>(File.ReadAllText(path)));
         }
         [MsInfo("从课表导出一个JSON描述的课程：ExpCse <ID> <.json>")]
         public void ExpCse(string id, string path = "")
         {
             if (Schedule is null) return;
 
-            if (!int.TryParse(id, out var index) || index < 0 || index >= Schedule.Entries.Count) return;
+            if (!int.TryParse(id, out var index) || index < 0 || index >= Schedule.Count) return;
             if (path == "")
                 path = Io?.ReadLine("输入保存文件位置");
             try
             {
-                File.WriteAllText(path, SerializeObject(Schedule.Entries[index]));
+                File.WriteAllText(path, SerializeObject(Schedule[index]));
             }
             catch
             {
@@ -76,29 +76,29 @@ namespace HITScheduleMasterCLI
         public void Remove(string id)
         {
             if (Schedule is null) return;
-            if (int.TryParse(id, out var index) && index >= 0 && index < Schedule.Entries.Count)
+            if (int.TryParse(id, out var index) && index >= 0 && index < Schedule.Count)
             {
-                Schedule.Entries.RemoveAt(index);
+                Schedule.RemoveAt(index);
             }
         }
         [MsInfo("编辑课表中的课程：Edit <ID>")]
         public void Edit(string id)
         {
             if (Schedule is null) return;
-            if (int.TryParse(id, out var index) && index >= 0 && index < Schedule.Entries.Count)
+            if (int.TryParse(id, out var index) && index >= 0 && index < Schedule.Count)
             {
-                var course = Schedule.Entries[index];
-                course.CourseName = Io?.ReadLine($"输入课程名称={course.CourseName}",course.CourseName,
+                var course = Schedule[index];
+                course.CourseName = Io?.ReadLine($"输入课程名称={course.CourseName}", course.CourseName,
                     null);
                 if (!int.TryParse(Io?.ReadLine($"输入星期(0-6,0表示周日)={((int)course.DayOfWeek)}",
-                            ((int)course.DayOfWeek).ToString(),null)
+                            ((int)course.DayOfWeek).ToString(), null)
                     , out var week)
                     || week < 0 || week > 6) goto WrongInput;
-                course.DayOfWeek = (DayOfWeek) week;
-                course.Teacher = Io?.ReadLine($"输入教师={course.Teacher}", course.Teacher,null);
-                course.Location = Io?.ReadLine($"输入地点={course.Location}", course.Location,null);
+                course.DayOfWeek = (DayOfWeek)week;
+                course.Teacher = Io?.ReadLine($"输入教师={course.Teacher}", course.Teacher, null);
+                course.Location = Io?.ReadLine($"输入地点={course.Location}", course.Location, null);
                 if (!TimeSpan.TryParse(Io?.ReadLine($"输入开始时间(hh:mm:ss)={course.StartTime}",
-                    course.StartTime.ToString(),null), out var startTime))
+                    course.StartTime.ToString(), null), out var startTime))
                     goto WrongInput;
                 course.StartTime = startTime;
                 if (!TimeSpan.TryParse(Io?.ReadLine($"输入持续时间(hh:mm:ss)={course.Length}",
@@ -106,7 +106,7 @@ namespace HITScheduleMasterCLI
                     goto WrongInput;
                 course.Length = length;
                 var weekExpression = Io?.ReadLine(
-                    $"输入周数(周数/起始-截至[单/双/(无)]，空格隔开)={course.WeekExpression}",course.WeekExpression,null);
+                    $"输入周数(周数/起始-截至[单/双/(无)]，空格隔开)={course.WeekExpression}", course.WeekExpression, null);
                 if (weekExpression != course.WeekExpression)
                 {
                     course.ChangeWeek(weekExpression);
@@ -114,7 +114,7 @@ namespace HITScheduleMasterCLI
                 return;
 
             }
-            WrongInput:
+        WrongInput:
             Io?.WriteLine("非法输入。", OutputType.Error);
         }
         [MsInfo("导出整张课表：Export <.ics>")]
@@ -168,9 +168,9 @@ namespace HITScheduleMasterCLI
             }
 
             Io?.WriteLine(outList, OutputType.ListTitle);
-            for (var i = 0; i < Schedule.Entries.Count; i++)
+            for (var i = 0; i < Schedule.Count; i++)
             {
-                ShowScheduleEntry(i, maxWeek, Schedule.Entries[i]);
+                ShowScheduleEntry(i, maxWeek, Schedule[i]);
             }
         }
         [MsInfo("从xls导入整个课表：LoadXls <.xls>")]
@@ -184,7 +184,7 @@ namespace HITScheduleMasterCLI
             }
 
             using var fs = File.OpenRead(path);
-            Schedule = new Schedule(fs);
+            Schedule = Schedule.LoadFromStream(fs);
         }
         [MsInfo("从json导入整个课表：LoadJson <.json>")]
         public void LoadJson(string path)
