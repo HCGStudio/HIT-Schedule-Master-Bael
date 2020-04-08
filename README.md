@@ -1,1 +1,1 @@
-Move to [HIT-Schedule-Master-CLI](https://github.com/HCGStudio/HIT-Schedule-Master-CLI).
+Moved to [HIT-Schedule-Master-CLI](https://github.com/HCGStudio/HIT-Schedule-Master-CLI).
