@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -184,7 +185,7 @@ namespace HITScheduleMasterCLI
             }
 
             using var fs = File.OpenRead(path);
-            Schedule = Schedule.LoadFromStream(fs);
+            Schedule = Schedule.LoadFromXlsStream(fs);
         }
         [MsInfo("从json导入整个课表：LoadJson <.json>")]
         public void LoadJson(string path)
@@ -221,6 +222,13 @@ namespace HITScheduleMasterCLI
 
             Schedule = new Schedule(year, (Semester)s);
         }
+
+        [MsInfo("打开浏览器下载课表")]
+        public void Download()
+        {
+            Process.Start(new ProcessStartInfo("http://jwts-hit-edu-cn.ivpn.hit.edu.cn/") {UseShellExecute = true});
+        }
+
         [MsInfo("初始化课表")]
         public void Init()
         {

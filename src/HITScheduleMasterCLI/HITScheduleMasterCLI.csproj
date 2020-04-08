@@ -3,17 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="HCGStudio.HITScheduleMasterCore" Version="1.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\HIT-Schedule-Master-Core\src\HITScheduleMasterCore.csproj" />
-    <ProjectReference Include="..\PlasticMetal.MobileSuit\src\MobileSuit\MobileSuit.csproj" />
+    <PackageReference Include="HCGStudio.HITScheduleMasterCore" Version="1.1.0" />
+    <PackageReference Include="PlasticMetal.MobileSuit" Version="1.1.0" />
   </ItemGroup>
 
 </Project>
